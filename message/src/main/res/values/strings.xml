@@ -1,13 +1,14 @@
 <resources>
     <string name="msg_sc_400">请求无效</string>
     <string name="msg_sc_401">请求未授权</string>
-    <string name="msg_sc_404">请求地址不存在</string>
+    <string name="msg_sc_403">用户无权限</string>
+    <string name="msg_sc_404">地址不存在</string>
     <string name="msg_sc_405">请求方法不允许</string>
-    <string name="msg_sc_500">服务器内部发生错误</string>
+    <string name="msg_sc_500">服务器内部错误</string>
     <string name="msg_sc_503">服务暂时不可用</string>
-    <string name="msg_sc_504">网关超时</string>
+    <string name="msg_sc_504">服务器网关超时</string>
     <string name="msg_sc_unknown">未知响应状态%d</string>
-    <string name="msg_cnn_no_route">内部网络不可达</string>
+    <string name="msg_cnn_no_route">网络路由错误</string>
     <string name="msg_cnn_refuse">服务器拒绝连接</string>
     <string name="msg_cnn_unreachable">您的网络似乎有问题</string>
     <string name="msg_cnn_timeout">连接超时</string>

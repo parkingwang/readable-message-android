@@ -18,7 +18,7 @@ public class ReadableMessage {
     private final List<ExceptionParser> mExceptionParsers = new ArrayList<>();
     private final List<StatusCodeParser> mStatusCodeParsers = new ArrayList<>();
 
-    private String mDefaultMessage = "未知的错误";
+    private String mDefaultMessage = "未知错误";
 
     private ReadableMessage(Context context) {
         mContext = context;
@@ -92,22 +92,17 @@ public class ReadableMessage {
      * 解析Http Status Code对应的出错消息
      *
      * @param statusCode StatusCode
-     * @param text       Http状态码的文本信息。可以为空。在解析器在根据需要使用。
      * @return 提示消息
      */
-    public String messageOfHttpCode(int statusCode, String text) {
+    public String messageOfHttpCode(int statusCode) {
         final Resources resources = mContext.getResources();
         for (StatusCodeParser parser : mStatusCodeParsers) {
-            final MessageResult rs = parser.onParse(resources, statusCode, text);
+            final MessageResult rs = parser.onParse(resources, statusCode);
             if (rs.passed) {
                 return rs.message;
             }
         }
         return mDefaultMessage;
-    }
-
-    public String messageOfHttpCode(int statusCode) {
-        return messageOfHttpCode(statusCode, null);
     }
 
 }

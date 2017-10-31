@@ -1,7 +1,7 @@
 buildscript {
     dependencies {
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:3.1.1"
     }
 }
@@ -13,14 +13,6 @@ apply plugin: 'com.jfrog.artifactory-upload'
 
 group = GROUP
 
-// Both the artifactory and bintray plugins depend on this singular
-// global `version` variable. As such, we need to configure it based
-// on which task we're running.
-//
-// The solution here is brittle; it just checks whether 'bintrayUpload'
-// was called for execution, otherwise it assumes SNAPSHOT. If we
-// were to wait until the task graph was built, we'd be too late
-// (the plugins would already have used `version`).
 boolean isReleaseBuild = gradle.startParameter.taskNames.contains('bintrayUpload')
 version = isReleaseBuild ? VERSION_NAME : "$VERSION_NAME-SNAPSHOT"
 logger.info("ReadableMessage using version=$project.version")
@@ -77,9 +69,6 @@ install {
     }
 }
 
-// Configure artifactory (for publishing snapshots)
-//
-// Based on NebulaOJOPublishingPlugin (from nebula-bintray-plugin)
 artifactory {
     contextUrl = 'https://oss.jfrog.org'
 

@@ -15,12 +15,14 @@ import static com.parkingwang.messages.MessageResult.reject;
 public class DefaultStatusCodeParser implements StatusCodeParser {
 
     @Override
-    public MessageResult onParse(Resources resources, int statusCode, String text) {
+    public MessageResult onParse(Resources resources, int statusCode) {
         switch (statusCode) {
             case 400:
                 return accept(resources.getString(R.string.msg_sc_400));
             case 401:
                 return accept(resources.getString(R.string.msg_sc_401));
+            case 403:
+                return accept(resources.getString(R.string.msg_sc_403));
             case 404:
                 return accept(resources.getString(R.string.msg_sc_404));
             case 405:

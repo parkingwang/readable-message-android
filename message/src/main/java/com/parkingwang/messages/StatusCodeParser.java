@@ -7,6 +7,6 @@ import android.content.res.Resources;
  */
 public interface StatusCodeParser {
 
-    MessageResult onParse(Resources resources, int code, String text);
+    MessageResult onParse(Resources resources, int statusCode);
 
 }
